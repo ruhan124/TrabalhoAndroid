@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">SwAPP</string>
+	<string name="app_name">SwaPP</string>
+	<string name="resposta">Resposta</string>
+	<string name="resposta_escolhida" >Resposta escolhida: %s</string>
+	<string name="sim">Sim</string>
+	<string name="nao">Não</string>
+	<string name="resposta_vazia">Responda!</string>
+	<string name="questao_respondida">Pergunta já respondida</string>
 </resources>
