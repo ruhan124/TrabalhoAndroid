@@ -13,7 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
 	public static List<Questao> questions = new ArrayList<>();
 	private final QuestaoBuilder questionsBuilder = new QuestaoBuilder();
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
 	@SuppressLint("ClickableViewAccessibility")
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		questions = questionsBuilder.build();
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
 		screen.setOnTouchListener(new OnSwipeTouchListener(getApplicationContext()) {
 			@Override
-			public void onSwipeTop() { // Não
+			public void onSwipeTop(){ // Não
 				super.onSwipeTop();
 				if (question.getResposta() == null) {
 					question.setResposta(NumOpcao.NO.getOption());
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 			}
 
 			@Override
-			public void onSwipeBottom() { // Sim / Confirmar
+			public void onSwipeBottom(){ // Sim / Confirmar
 				super.onSwipeBottom();
 				if (question.getResposta() == null) {
 					question.setResposta(NumOpcao.YES.getOption());
@@ -56,47 +56,47 @@ public class MainActivity extends AppCompatActivity {
 			}
 
 			@Override
-			public void onSwipeRight() {
+			public void onSwipeRight(){
 				super.onSwipeRight();
 				loadQuestion("right");
 			}
 
 			@Override
-			public void onSwipeLeft() {
+			public void onSwipeLeft(){
 				super.onSwipeLeft();
 				loadQuestion("left");
 			}
 		});
 	}
 
-	private void loadQuestion(String direction) {
+	private void loadQuestion(String direction){
 		resetIndexIfOut();
 
 		question = questions.get(this.screenIndex);
 		tvQuestion.setText(question.getQuestion());
 
-		if (direction.equals("right")) {
+		if (direction.equals("right")){
 			nextQuestion();
 		}
 
-		if (direction.equals("left")) {
+		if (direction.equals("left")){
 			prevQuestion();
 		}
 
 	}
 
-	private void resetIndexIfOut() {
+	private void resetIndexIfOut(){
 		if (screenIndex > (questions.size() - 1) || screenIndex < (questions.size() - 1)) {
 			screenIndex = 0;
 		}
 	}
 
 
-	private void prevQuestion() {
+	private void prevQuestion(){
 		screenIndex--;
 	}
 
-	private void nextQuestion() {
+	private void nextQuestion(){
 		screenIndex++;
 	}
 }
